@@ -1,2 +1,10 @@
 # Redirects from what the browser requests to what we serve
 /en              /en/home
+
+# Redirection du domaine principal
+https://africtivistes.org/* https://africtivistes.com/:splat 301!
+https://www.africtivistes.org/* https://www.africtivistes.com/:splat 301!
+
+# Redirection HTTP vers HTTPS (bonne pratique)
+http://africtivistes.org/* https://africtivistes.com/:splat 301!
+http://www.africtivistes.org/* https://www.africtivistes.com/:splat 301!
