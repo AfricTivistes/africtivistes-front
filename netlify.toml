@@ -15,15 +15,3 @@
   to = "/fr/"
   status = 301
   force = true
-
-[[redirects]]
-  from = "https://africtivistes.org/*"
-  to = "https://africtivistes.com/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://www.africtivistes.org/*"
-  to = "https://www.africtivistes.com/:splat"
-  status = 301
-  force = true
