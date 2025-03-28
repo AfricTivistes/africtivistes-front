@@ -26,8 +26,8 @@ export default function BlogPost({ data }) {
         <Layout>
         <Seo title={title} meta={metaImages}/>
     <section id="blog-sidebar"  class="pt-10 pb-10">
-          <div class="container mt-3">
-            <div class="row">
+          <div className="container mt-3">
+            <div className="row">
               <div className="col-lg-8">
                     <div className="blog-details">
                         <div className="image">
@@ -40,7 +40,7 @@ export default function BlogPost({ data }) {
                                     {
                                       categories.nodes.map(category=>(
                                         <Link to={`/${category.slug}`} >
-                                          <button type="button"  class="btn btn-outline" style={{ color: '#a63117' }}>{category?.name}
+                                          <button type="button"  className="btn btn-outline" style={{ color: '#a63117' }}>{category?.name}
                                           </button>
                                         </Link>
 
@@ -62,8 +62,8 @@ export default function BlogPost({ data }) {
                         </div>
                       </div> 
                 </div>
-                <div class="col-lg-4">
-                    <div class="blog-sidebar ">
+                <div className="col-lg-4">
+                    <div className="blog-sidebar ">
                         <NewsletterForm />
                         <Underline />
                         <RecentPost/>

@@ -51,8 +51,8 @@ const IndexPage = ({data}) => (
         <div className="row">
   <div className="col-lg-12">
     <div className="project-more text-center mt-50">
-      {data.communiques && data.communiques.edge && data.communiques.edge.node ? (
-        <a className="main-btn" href={data.communiques.edge.node.link}>
+      {data.communiques && data.communiques.edges && data.communiques.edges.length > 0 ? (
+        <a className="main-btn" href="/communiques">
           <FormattedMessage id="more" />
         </a>
       ) : (
@@ -551,7 +551,7 @@ allStickyPosts: allWpPost(
 
   rapports: allWpPost(
     sort: {fields: date, order: DESC},
-    limit: 3
+    limit: 4
     filter: {language: {code: {eq: FR}}, categories: {nodes: {elemMatch: {slug: {eq: "nos-publications"}}}}}
   ) {
     edges {

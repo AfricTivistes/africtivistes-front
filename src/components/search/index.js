@@ -1,10 +1,10 @@
 import * as React from "react"
 
-import { ImportScript } from '../../services'
+import { useImportScript } from '../../services'
 
 const Search = () =>{
 
-  ImportScript("/js/load/search.js")
+  useImportScript("/js/load/search.js")
 
   return(<>
     <div className="search-box">

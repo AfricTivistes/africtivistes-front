@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { ImportScript } from '../../services'
+import { useImportScript } from '../../services'
 
 const Map = () => {
   
-  ImportScript("/js/map-script.js");
+  useImportScript("/js/map-script.js");
 
   return (<section id="contact-map">
 

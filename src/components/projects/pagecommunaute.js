@@ -2,11 +2,13 @@ import React from 'react'
 import { FormattedMessage, injectIntl } from "gatsby-plugin-react-intl"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import { ImportScript } from '../../services'
+import { useImportScript } from '../../services'
 
 const PageCommunaute = ({programmes, projects}) => {
 
-  ImportScript("/js/load/project2.js");
+  //ImportScript("/js/load/project2.js");
+  useImportScript("/js/load/project3.js");
+
 
   return (
   <section id="project-page" className="pt-30 pb-30">

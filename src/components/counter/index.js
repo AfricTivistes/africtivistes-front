@@ -1,10 +1,10 @@
 import React from 'react'
 import {FormattedMessage } from "gatsby-plugin-react-intl"
-import { ImportScript } from '../../services'
+import { useImportScript } from '../../services'
 
 const Counter = ({posts}) => {
 
-  ImportScript("/js/load/counter.js");
+  useImportScript("/js/load/counter.js");
 
   return (<section id="counter-part-2" >
     {/* style={{backgroundImage:`url(/images/slider/ss.jpeg)`}} */}

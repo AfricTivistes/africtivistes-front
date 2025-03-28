@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-export const ImportScript = resourceUrl => {
+/*export const useImportScript = resourceUrl => {
     useEffect(() => {
         const script = document.createElement('script');
         script.src = resourceUrl;
@@ -10,6 +10,20 @@ export const ImportScript = resourceUrl => {
             return () => {
                 document.body.removeChild(script);
             }
+        }
+    }, [resourceUrl]);
+}
+*/
+
+export const useImportScript = resourceUrl => {
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = resourceUrl;
+        script.async = true;
+        document.body.appendChild(script);
+        
+        return () => {
+            document.body.removeChild(script);
         }
     }, [resourceUrl]);
 }
