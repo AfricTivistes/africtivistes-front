@@ -69,7 +69,7 @@ const Contact = ({intl}) => {
                             <i className="flaticon-placeholder"></i>
                           </div>
                           <div className="content pl-15">
-                            <p>BP 19968 Dakar , Cite Sofraco , VDN 3 prolongee</p>
+                            <p>Liberté 6 extention, Villa Numéro 263, Dakar - SENEGA</p>
                           </div>
                         </div>
                       </li>
