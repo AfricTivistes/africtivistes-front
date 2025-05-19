@@ -2,13 +2,15 @@ import React from 'react'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {injectIntl } from "gatsby-plugin-react-intl"
 
+const getPublicLink = (link) => link.replace(/^https?:\/\/update\.africtivistes\.org/, '/fr');
+
 const SinglePost = ({post}) => {
     const{title, date,link, featuredImage}=post.node
     const image = featuredImage && getImage(featuredImage.node.small)
     return (
         <ul style={{listStyleType: 'none'}}>
             <li>
-                <a href={link}>
+                <a href={getPublicLink(link)}>
                     <span class="single-post mt-30">
                         <span class="image">
                         <GatsbyImage image={image} alt={title} />

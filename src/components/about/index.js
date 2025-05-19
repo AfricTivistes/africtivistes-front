@@ -1,6 +1,8 @@
 import React from 'react'
 import {FormattedMessage} from "gatsby-plugin-react-intl"
 
+const getPublicLink = (link) => link.replace(/^https?:\/\/update\.africtivistes\.org/, '/fr');
+
 const About = ({posts}) => {
   return(
     <>
@@ -27,7 +29,7 @@ const About = ({posts}) => {
 <div className="about-content" >
 <div className="video">
 {posts.map(post=>(
-                  <a  key={post.id} className="video-popup" href={post.link} aria-label="button"><i className="flaticon-music-player-play"></i></a>
+                  <a  key={post.id} className="video-popup" href={getPublicLink(post.link)} aria-label="button"><i className="flaticon-music-player-play"></i></a>
 
               ))}</div>
 <div className="about-text">
@@ -36,7 +38,7 @@ const About = ({posts}) => {
 <br/><FormattedMessage id="chersafrictivistes"/></p>
 {posts.map(post=>(
 <p key={post.id} className="mb-25"><FormattedMessage id="discourstexte"/><a 
-href={post.link} ><FormattedMessage id="readMore"/></a>
+href={getPublicLink(post.link)} ><FormattedMessage id="readMore"/></a>
 <br/>
 <br/>
 </p>

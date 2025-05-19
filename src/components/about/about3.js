@@ -1,6 +1,8 @@
 import React from 'react';
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
+const getPublicLink = (link) => link.replace(/^https?:\/\/update\.africtivistes\.org/, '/fr');
+
 const About3 = ({ content, valeurs, histoire, picture, language }) => {
   const image = getImage(picture);
 
@@ -19,10 +21,10 @@ const About3 = ({ content, valeurs, histoire, picture, language }) => {
               <div className="years-experience mt-45">
                 <ul>
                   {valeurs.map((value, index) => (
-                    <li key={index}><a href={value.link}><h3>Nos valeurs</h3></a></li>
+                    <li key={index}><a href={getPublicLink(value.link)}><h3>Nos valeurs</h3></a></li>
                   ))}
                   {histoire.map((story, index) => (
-                    <li key={index}><a href={story.link}><h3>Notre Histoire</h3></a></li>
+                    <li key={index}><a href={getPublicLink(story.link)}><h3>Notre Histoire</h3></a></li>
                   ))}
                 </ul>
               </div>
