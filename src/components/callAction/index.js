@@ -3,6 +3,8 @@ import {FormattedMessage, IntlContextConsumer } from "gatsby-plugin-react-intl"
 import {useContactPageEN} from "../../hooks/query/contactPage/EN"
 import {useContactPageFR} from "../../hooks/query/contactPage/FR"
 
+const getPublicLink = (link) => link.replace(/^https?:\/\/update\.africtivistes\.org/, '/fr');
+
 const Action = ({page}) => 
 (<section id="call-to-action" className="pt-30 pb-30 gray-bg">
     <div className="container">
@@ -14,7 +16,7 @@ const Action = ({page}) =>
         </div>
         <div className="col-xl-3 col-lg-3 col-md-4 col-sm-5">
           <div className="call-action-btn pt-30 text-center">
-          <a  className="main-btn" data-animation="fadeInUp" data-delay="2s" key={page.id} data-filter={`.${page.slug}`} href={page.link}><FormattedMessage id ="contactUs"/></a>
+          <a  className="main-btn" data-animation="fadeInUp" data-delay="2s" key={page.id} data-filter={`.${page.slug}`} href={getPublicLink(page.link)}><FormattedMessage id ="contactUs"/></a>
         </div>
         </div>
       </div>

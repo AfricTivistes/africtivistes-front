@@ -4,6 +4,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { useImportScript } from '../../services'
 import { Link } from "gatsby"
 
+const getPublicLink = (link) => link.replace(/^https?:\/\/update\.africtivistes\.org/, '/fr');
+
 const ProjectPart = ({projects}) => {
   // Utilisez le hook personnalisé pour importer le script
   useImportScript("/js/load/project3.js");
@@ -38,7 +40,7 @@ const ProjectPart = ({projects}) => {
                 <div className="testimonial-author">
                   <div className="author-name">
                     <span>
-                      <Link to={project.link}><h6>{project.title}</h6></Link><br/>{project.date}
+                      <Link to={getPublicLink(project.link)}><h6>{project.title}</h6></Link><br/>{project.date}
                     </span>
                   </div>
                 </div>
