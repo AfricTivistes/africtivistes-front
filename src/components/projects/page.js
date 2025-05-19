@@ -5,6 +5,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import { useImportScript } from '../../services'
 
+const getPublicLink = (link) => link.replace(/^https?:\/\/update\.africtivistes\.org/, '/fr');
+
 const ProjectsPage = ({programmes, projects}) => {
 
   useImportScript("/js/load/project2.js");
@@ -53,7 +55,7 @@ const ProjectsPage = ({programmes, projects}) => {
      )}
    </div>
    <div className="card-body p-3" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '80px', backgroundColor: '#a63117' }}>
-     <Link to={project.link} className="text-decoration-none">
+     <Link to={getPublicLink(project.link)} className="text-decoration-none">
        <h6 className="card-title mb-0 text-center" style={{ fontSize: '16px', fontWeight: '600', lineHeight: '1.4', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: '2', WebkitBoxOrient: 'vertical', color: '#fff' }}>
          {project.title}
        </h6>
