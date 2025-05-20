@@ -28,9 +28,15 @@ const SingleNewsMt = ({post}) => {
             <a>{date}</a>
           </span>
           <span className="text-muted float-right">
-            <a style={{ color: '#a63117', transition: 'color 0.3s ease-in-out' }} href={getPublicLink(link)}>
-              <FormattedMessage id="readMore" /> <i className="flaticon-right-arrow"></i>
-            </a>
+            {getPublicLink(link) ? (
+              <a style={{ color: '#a63117', transition: 'color 0.3s ease-in-out' }} href={getPublicLink(link)}>
+                <FormattedMessage id="readMore" /> <i className="flaticon-right-arrow"></i>
+              </a>
+            ) : (
+              <button type="button" disabled style={{background:'none',border:'none',color:'#aaa'}}>
+                <FormattedMessage id="readMore" /> <i className="flaticon-right-arrow"></i>
+              </button>
+            )}
           </span>
           
         </div>

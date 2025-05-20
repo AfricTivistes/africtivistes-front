@@ -10,7 +10,7 @@ const SinglePost = ({post}) => {
     return (
         <ul style={{listStyleType: 'none'}}>
             <li>
-                <a href={getPublicLink(link)}>
+                <a href={getPublicLink(link)} aria-label={`Lire l'article : ${title}`}>
                     <span class="single-post mt-30">
                         <span class="image">
                         <GatsbyImage image={image} alt={title} />

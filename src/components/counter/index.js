@@ -1,5 +1,4 @@
 import React from 'react'
-import {FormattedMessage } from "gatsby-plugin-react-intl"
 import { useImportScript } from '../../services'
 
 const getPublicLink = (link) => link.replace(/^https?:\/\/update\.africtivistes\.org/, '/fr');

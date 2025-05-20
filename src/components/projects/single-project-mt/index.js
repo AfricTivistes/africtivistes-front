@@ -24,7 +24,13 @@ const SingleProjectMt = ({post}) => {
                 </div>
                 <div class="card-footer">
                             <span class="text-muted"><a>{date}</a></span>
-                            <span class="text-muted float-right"><a style={{ color: '#a63117'}} href={getPublicLink(link)} ><FormattedMessage id="readMore"/> <i className="flaticon-right-arrow"></i></a></span>
+                            {getPublicLink(link) ? (
+                              <span class="text-muted float-right"><a style={{ color: '#a63117'}} href={getPublicLink(link)} ><FormattedMessage id="readMore"/> <i className="flaticon-right-arrow"></i></a></span>
+                            ) : (
+                              <span class="text-muted float-right"><button type="button" disabled style={{background:'none',border:'none',color:'#aaa'}}>
+                                <FormattedMessage id="readMore"/> <i className="flaticon-right-arrow"></i>
+                              </button></span>
+                            )}
                 </div>
       </div>
 )
