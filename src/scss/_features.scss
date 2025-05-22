@@ -8,6 +8,68 @@
     background-repeat: repeat;
 }
 
+/* Plateforme Slider Styles */
+.plateforme-slider {
+    .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: $theme-color;
+        color: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.5s ease;
+        
+        &:hover {
+            background-color: darken($theme-color, 10%);
+        }
+        
+        i {
+            font-size: 20px;
+            line-height: 40px;
+        }
+    }
+    
+    .prev {
+        left: -20px;
+    }
+    
+    .next {
+        right: -20px;
+    }
+    
+    @media #{$xs} {
+        .prev {
+            left: -10px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            
+            i {
+                font-size: 16px;
+                line-height: 30px;
+            }
+        }
+        
+        .next {
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            
+            i {
+                font-size: 16px;
+                line-height: 30px;
+            }
+        }
+    }
+}
+
 .singel-features{
     & .icon{
         & i{
@@ -77,11 +139,3 @@
         padding-bottom: 60px;
     }
 }
-
-
-
-
-
-
-
-

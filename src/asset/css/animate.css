@@ -3770,4 +3770,10 @@
   border-color: #1E90FF;
   background-color: transparent;
 }
-
+@media (min-width: 992px) {
+  .custom-container {
+      max-width: 1800px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+}

@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { ImportScript } from '../../services'
+import { useImportScript } from '../../services'
 
 const Testimonial = () => {
 
-  ImportScript("/js/load/testimonial.js");
+  useImportScript("/js/load/testimonial.js");
 
   return (<section id="testimonial-part" className="pt-120 pb-130 gray-bg">
     <div className="container">

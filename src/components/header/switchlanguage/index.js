@@ -1,4 +1,5 @@
 import React from "react"
+import { navigate } from "gatsby"
 import { IntlContextConsumer, changeLocale } from "gatsby-plugin-react-intl"
 
 const languageName = {
@@ -7,6 +8,18 @@ const languageName = {
 }
 
 const Switchlanguage = ({translation}) => {
+  const handleLanguageChange = (language) => {
+    // Force change locale
+    changeLocale(language)
+    
+    // Conditional navigation based on language
+    if (language === 'en') {
+      navigate(`/${language}/home/`)
+    } else if (language === 'fr') {
+      navigate(`/${language}/`)
+    }
+  }
+
   return (
       <IntlContextConsumer>
         {({ languages, language: currentLocale }) =>
@@ -14,9 +27,12 @@ const Switchlanguage = ({translation}) => {
             <a
               role="button"
               index={0}
-              href={translation !== '' ? translation : `/`}
+              href={language === 'en' ? `/${language}/home/` : `/${language}/`}
               key={language}
-              onClick={() => changeLocale(language)}
+              onClick={(e) => {
+                e.preventDefault()
+                handleLanguageChange(language)
+              }}
               style={{
                 color: currentLocale === language ? `` : `#a63117`,
                 margin: 10,

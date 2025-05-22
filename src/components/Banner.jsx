@@ -1,7 +1,7 @@
 import React from 'react'
 
 const PageBanner = ({ title }) => (
-    <section id="page-banner" className="bg_cover pt-150 pb-150" style={{ backgroundImage: `url(/images/ss.jpeg` }} data-overlay="6">
+    <section id="page-banner" className="bg_cover pt-150 pb-150" style={{ backgroundImage: `url(/images/ss.jpeg)` }} data-overlay="6">
         <div className="container">
             <div className="row">
                 <div className="col-lg-12">

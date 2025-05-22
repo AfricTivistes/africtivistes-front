@@ -6,8 +6,8 @@ module.exports = {
     author: `@africtivistes`,
     email: [`info@africtivistes.org`],
     tels: ['(+221) 33 837 51 24'],
-    adresse: 'BP 19968 Dakar , Cite Sofraco , VDN 3 prolongee',
-    siteUrl: `https://www.africtivistes.org/`,
+    adresse: 'Liberté 6 extention, Villa Numéro 263, Dakar - SENEGAL',
+    siteUrl: `https://www.africtivistes.com/`,
   },
   plugins: [
     // {
@@ -24,41 +24,74 @@ module.exports = {
     //   }
     // },
     {
-      resolve: `gatsby-source-wordpress`,
-      options: {
-        url: `https://update.africtivistes.org/graphql`,
-        presets: [
-          {
-            presetName: `DEVELOP`,
-            useIf: () => process.env.NODE_ENV === `development`,
-            options: {
-              develop: {
-                nodeUpdateInterval: 60000, // Update nodes every 60 seconds 
-                hardCacheMediaFiles: true,
-                hardCacheData: false,
+      
+        resolve: `gatsby-source-wordpress`,
+        options: {
+          url: `https://update.africtivistes.org/graphql`,
+          
+          // Configuration du schéma
+          schema: {
+            timeout: 180000, // Augmenté à 180 secondes pour donner plus de temps
+            perPage: 5,      // Réduit davantage le nombre d'éléments par requête
+            requestConcurrency: 2, // Réduit encore plus les requêtes concurrentes
+          },
+          
+          // Gestion spécifique des médias
+          type: {
+            MediaItem: {
+              localFile: {
+                requestConcurrency: 2, // Réduit le traitement concurrent des images
+                maxFileSizeBytes: 5242880, // Limite à 5MB par fichier
+                excludeByMimeTypes: ['video/mp4', 'application/pdf'], // Exclut les formats problématiques
               },
-              type: {
-                MediaItem: {
-                  localFile: {
-                    requestConcurrency: 10, // Amount of images to download concurrently. Try lowering this if wordpress server crashes on import.
-                  },
+            },
+            // Filtrer les types de contenu problématiques
+            //Post: {
+            //  limit: 50, // Limite le nombre de posts traités
+            //}
+          },
+          
+          // Options HTML simplifiées
+          html: {
+            useGatsbyImage: false, // Désactive temporairement la conversion des images
+            createStaticFiles: false, // Désactive la création de fichiers statiques
+          },
+          
+          // Options de débogage
+          debug: {
+            graphql: {
+              showQueryOnError: true,
+              showQueryVarsOnError: true,
+            },
+            timeBuildSteps: true,
+          },
+          
+          // Configurations par environnement
+          presets: [
+            {
+              presetName: `DEVELOPPEMENT`,
+              useIf: () => process.env.NODE_ENV === `development`,
+              options: {
+                develop: {
+                  nodeUpdateInterval: 60000,
+                  hardCacheMediaFiles: true,
                 },
               },
             },
-          },
-          {
-            presetName: `PRODUCTION`,
-            useIf: () => process.env.NODE_ENV === `production`,
-            options: {
-              production: {
-                hardCacheMediaFiles: true,
-                allow404Images: true,
-                allow401Images: true,
+            {
+              presetName: `PRODUCTION`,
+              useIf: () => process.env.NODE_ENV === `production`,
+              options: {
+                production: {
+                  hardCacheMediaFiles: true,
+                },
               },
             },
-          },
-        ],
-      },
+          ],
+          // Protection contre les erreurs
+          verbose: true,
+        },
+      
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
@@ -84,11 +117,23 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-          trackingId: 'UA-228721643-1', // leave empty if you want to disable the tracker
-          anonymize: true, // default
+        // Votre ID de mesure Google Analytics
+        trackingIds: ["G-9579G1EGCX"],
+        // Cette ligne est optionnelle mais recommandée
+        gtagConfig: {
+          optimize_id: "OPT_CONTAINER_ID",
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        // Cette ligne est également optionnelle mais recommandée
+        pluginConfig: {
+          // Met le script dans la tête du document
           head: true,
+          // Respecte le paramètre Do Not Track
+          respectDNT: true,
+        },
       },
     },
     `gatsby-plugin-gatsby-cloud`,

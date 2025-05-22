@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { ImportScript } from '../../services'
+import { useImportScript } from '../../services'
 
 const Counter2 = () => {
 
-  ImportScript("/js/load/counter.js");
+  useImportScript("/js/load/counter.js");
 
   return (<div id="counter-part-3" className="bg_cover pt-80 pb-120" style={{backgroundImage: `url(/images/bg-4.jpg)`}} data-overlay="5">
     <div className="container">

@@ -3,11 +3,13 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {FormattedMessage, injectIntl } from "gatsby-plugin-react-intl"
 
 const SingleBogMt = ({ post }) => {
-    const { title, date, link, excerpt, name, featuredImage, tags } = post.node;
+    const { title, date, link, excerpt, name, featuredImage } = post.node;
     const image = featuredImage && getImage(featuredImage.node.big);
   
     // Assurez-vous que 'tags' existe et qu'il contient des éléments
     // const tagList = tags && tags.nodes ? tags.nodes.map(tag => tag.name) : [];
+  
+    const getPublicLink = (link) => link.replace(/^https?:\/\/update\.africtivistes\.org/, '/fr');
   
     return (
       <div className="single-blog mt-50">
@@ -31,9 +33,9 @@ const SingleBogMt = ({ post }) => {
             </ul>
           </div>
           <div className="content">
-            <a href={link} ><h4>{title}</h4></a>
+            <a href={getPublicLink(link)} ><h4>{title}</h4></a>
             <p dangerouslySetInnerHTML={{ __html: excerpt.substring(0, 150) }} />
-            <a href={link}>
+            <a href={getPublicLink(link)}>
               <FormattedMessage id="readMore" /> <i className="fa fa-angle-right"></i>
             </a>
             {/* {tagList.length > 0 && (

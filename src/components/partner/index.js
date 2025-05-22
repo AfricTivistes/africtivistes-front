@@ -1,10 +1,10 @@
 import React from 'react'
 import {FormattedMessage} from "gatsby-plugin-react-intl"
-import {ImportScript} from '../../services'
+import {useImportScript} from '../../services'
 
 const Partner = () => {
 
-  ImportScript("/js/load/partner.js");
+  useImportScript("/js/load/partner.js");
 
   return (<section id="partner-part" className="pt-30 pb-30">
     <div className="container" style={{ maxWidth: '1300px' }}>

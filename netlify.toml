@@ -1,7 +1,17 @@
 [[redirects]]
   from = "/en"
-  to = "/en/home"
+  to = "/en/home/"
   status = 301
-  force = false
-  query = {path = ":path"}
-  conditions = {Language = ["en"]}
+  force = true
+
+[[redirects]]
+  from = "/fr/"
+  to = "/fr/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/fr/home/"
+  to = "/fr/"
+  status = 301
+  force = true

@@ -85,6 +85,16 @@ export const query = graphql`
       }
     }
   }
+  valeurs: allWpPage(filter: {slug: {eq: "values"}}) {
+    nodes {
+      link
+    }
+  }
+  histoire: allWpPage(filter: {slug: {eq: "history"}}) {
+    nodes {
+      link
+    }
+  }
 }
 `
 

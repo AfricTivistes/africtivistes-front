@@ -2,7 +2,7 @@ import React from "react"
 import { useLocation } from "@reach/router"
 import Layout from "../components/layout"
 import { graphql, Link } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 import Seo from "../components/seo"
 import RecentPost from "../components/ListePost/ListePostSidebar"
 import CallAction from "../components/callAction"
@@ -11,20 +11,23 @@ import ListePosts from "../components/ListePost/ListePost"
 import Underline from "../components/Underline"
 import { FormattedMessage } from "gatsby-plugin-react-intl"
 import NewsletterForm from "../components/NewsletterForm";
+import { generateMetaImages } from "../utils/metaUtils"
 
 
 export default function BlogPost({ data }) {
   const {title, date, content, featuredImage, categories, terms} = data.allWpPost.nodes[0]
   const image = featuredImage && getImage(featuredImage.node.localFile)
+  const imageSrc = featuredImage ? `${data.site.siteMetadata.siteUrl}${getSrc(featuredImage.node.localFile)}` : '';
   const location = useLocation()
   const currentPath = location.href
+  const metaImages = generateMetaImages(imageSrc)
 
     return (
         <Layout>
-        <Seo title={title}/>
+        <Seo title={title} meta={metaImages}/>
     <section id="blog-sidebar"  class="pt-10 pb-10">
-          <div class="container mt-3">
-            <div class="row">
+          <div className="container mt-3">
+            <div className="row">
               <div className="col-lg-8">
                     <div className="blog-details">
                         <div className="image">
@@ -37,7 +40,7 @@ export default function BlogPost({ data }) {
                                     {
                                       categories.nodes.map(category=>(
                                         <Link to={`/${category.slug}`} >
-                                          <button type="button"  class="btn btn-outline" style={{ color: '#a63117' }}>{category?.name}
+                                          <button type="button"  className="btn btn-outline" style={{ color: '#a63117' }}>{category?.name}
                                           </button>
                                         </Link>
 
@@ -59,8 +62,8 @@ export default function BlogPost({ data }) {
                         </div>
                       </div> 
                 </div>
-                <div class="col-lg-4">
-                    <div class="blog-sidebar ">
+                <div className="col-lg-4">
+                    <div className="blog-sidebar ">
                         <NewsletterForm />
                         <Underline />
                         <RecentPost/>
@@ -145,6 +148,11 @@ export const query = graphql`
         node {
           ...PostFields
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }

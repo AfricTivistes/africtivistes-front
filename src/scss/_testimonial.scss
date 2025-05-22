@@ -102,7 +102,7 @@
     @include transition(0.4s);
     
     & .testimonial-content{
-        border: 1px solid #cccccc;
+        border: 1px solid #000;
         padding: 25px 30px 55px;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
@@ -111,7 +111,7 @@
     
     & .testimonial-author{
         padding: 15px 30px 20px;
-        background-color: $theme-color;
+        background-color:#a63117;;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         position: relative;

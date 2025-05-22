@@ -22,155 +22,150 @@ const IndexPage = ({data}) => (
 
     <Slider posts={data.allStickyPosts.edges} contacts={data.contact.nodes}/>
 
-    <div  className="row justify-content-center pt-30">
-                <div  className="col-lg-12">
-                    <div  className="section-title text-center pb-15">
-                        <h3><FormattedMessage id="plateforme"/></h3>
-                        <div  className="underline">
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
+    <div className="row justify-content-center pt-30">
+      <div className="col-lg-12">
+        <div className="section-title text-center pb-10">
+          <h3><FormattedMessage id="plateforme"/></h3>
+          <div className="underline">
+            <span></span>
+            <span></span>
+          </div>
         </div>
+      </div>
+    </div>
 
     <Features projects={data.plateforme.nodes}/>
 
-    <div  className="row justify-content-center pt-30">
-                <div  className="col-lg-12">
-                    <div  className="section-title text-center pb-15">
-                        <h3><FormattedMessage id="communiques"/></h3>
-                        <div  className="underline">
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <LatestNews posts={data.communiques.edges}/>
-        <div  className="row">
-          <div  className="col-lg-12">
-              <div  className="project-more text-center mt-50">
-                <a  className="main-btn"  href="communiques" ><FormattedMessage id="more"/></a>
-              </div>
-          </div>
-        </div>
-
     <div className="row justify-content-center pt-30">
-        <div className="col-lg-12">
-          <div className="section-title text-center pb-20">
-            <h3><FormattedMessage id="latestnews"/> </h3>
-              <div className="underline">
-                <span></span>
-                <span></span>
-              </div>
+      <div className="col-lg-12">
+        <div className="section-title text-center pb-15">
+          <h3><FormattedMessage id="communiques"/></h3>
+          <div className="underline">
+            <span></span>
+            <span></span>
           </div>
         </div>
       </div>
-    <LatestNews posts={data.allWpPost.edges}/>
-    <div>
-        <Projects posts={data.latestnews.edges} pages={data.allWpPage.nodes}/>
-        {/* <Projects posts={data.latestNewsExceptThree.edges} pages={data.allWpPage.nodes}/> */}
-        <div  className="row">
-          <div  className="col-lg-12">
-              <div  className="project-more text-center mt-50">
-                <a  className="main-btn"  href="actualites" ><FormattedMessage id="more"/></a>
-              </div>
+    </div>
+    <LatestNews posts={data.communiques.edges}/>
+    <div className="row">
+      <div className="col-lg-12">
+        <div className="project-more text-center mt-50">
+          {data.communiques && data.communiques.edges && data.communiques.edges.length > 0 ? (
+            <a className="main-btn" href="/communiques">
+              <FormattedMessage id="more" />
+            </a>
+          ) : (
+            <span></span>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <div className="row justify-content-center pt-30">
+      <div className="col-lg-12">
+        <div className="section-title text-center pb-20">
+          <h3><FormattedMessage id="latestnews"/> </h3>
+          <div className="underline">
+            <span></span>
+            <span></span>
           </div>
         </div>
+      </div>
     </div>
-
-
-
-        {/* <div  className="row justify-content-center pt-30">
-                <div  className="col-lg-12">
-                    <div  className="section-title text-center pb-15">
-                        <h3><FormattedMessage id="projetEnCours"/></h3>
-                        <div  className="underline">
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-        </div> */}
-
-
-    {/* <Features projects={data.programmeencoursExceptThree.nodes}/> */}
-
-    <div  className="row justify-content-center" >
-    <div  className="col-lg-12" >
-        <div  className="section-title text-center pt-10 pb-10" >
-        <br></br>
-            <a href='#'><h2><FormattedMessage id="enchiffres"/></h2></a>
-            <div  className="underline">
-                <span></span>
-                <span></span>
-            </div>
+    <LatestNews posts={data.allWpPost.edges}/>
+    <div>
+      <Projects posts={data.latestnews.edges} pages={data.allWpPage.nodes}/>
+      <div className="row">
+        <div className="col-lg-12">
+          <div className="project-more text-center mt-50">
+            <a className="main-btn" href="actualites"><FormattedMessage id="more"/></a>
+          </div>
         </div>
-        
+      </div>
     </div>
+
+    <div className="row justify-content-center">
+      <div className="col-lg-12">
+        <div className="section-title text-center pt-10 pb-10">
+          <br/>
+          <a href='#'><h2><FormattedMessage id="enchiffres"/></h2></a>
+          <div className="underline">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
     </div>
     <EnChiffres posts={data.sommet.nodes}/>
 
-    <div  className="row justify-content-center" >
-    <div  className="col-lg-12" >
-        <div  className="section-title text-center pt-10 pb-10" >
-        <br></br>
-            <a href='ressources/nos-publications/'><h2><FormattedMessage id="publication"/></h2></a>
-            <div  className="underline">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
-</div>
-    <NosChampions posts={data.rapports.edges} />
-    <div  className="row">
-          <div  className="col-lg-12">
-              <div  className="project-more text-center">
-                <a  className="main-btn"  href="ressources/nos-publications" ><FormattedMessage id="more"/></a>
-              </div>
+    <div className="row justify-content-center">
+      <div className="col-lg-12">
+        <div className="section-title text-center pt-10 pb-10">
+          <br/>
+          <a href='/nos-publications/'><h2><FormattedMessage id="publication"/></h2></a>
+          <div className="underline">
+            <span></span>
+            <span></span>
           </div>
-      </div>
-      <br></br>
- 
-    <div  className="row justify-content-center" >
-    <div  className="col-lg-12" >
-        <div  className="section-title text-center pt-10 pb-10" >
-        <br></br>
-            <a href='ressources/nos-champions/'><h2><FormattedMessage id="champions"/></h2></a>
-            <div  className="underline">
-                <span></span>
-                <span></span>
-            </div>
         </div>
+      </div>
     </div>
-</div>
+    <NosChampions posts={data.rapports.edges} />
+    <div className="row">
+      <div className="col-lg-12">
+        <div className="project-more text-center">
+          <a className="main-btn" href="/nos-publications"><FormattedMessage id="more"/></a>
+        </div>
+      </div>
+    </div>
+    <br/>
+
+    <div className="row justify-content-center">
+      <div className="col-lg-12">
+        <div className="section-title text-center pt-10 pb-10">
+          <br/>
+          <a href='/nos-championnes'><h2><FormattedMessage id="champions"/></h2></a>
+          <div className="underline">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <NosChampions posts={data.champions.edges} />
+    <div className="row">
+      <div className="col-lg-12">
+        <div className="project-more text-center">
+          <a className="main-btn" href="/nos-championnes"><FormattedMessage id="more"/></a>
+        </div>
+      </div>
+    </div>
+    <br/>
 
     <ProjectsPage programmes={data.allWpProgrammeType.nodes} projects={data.allWpProgramme.nodes} />
 
     <About posts={data.abidjan.nodes} actu={data.latestnews.edges}/>
     <Counter posts={data.sommet.nodes}/>
-    <div  className="row justify-content-center" >
-    <div  className="col-lg-12" >
-        <div  className="section-title text-center pt-10 pb-10" >
-        <br></br>
-            <a href='ressources/nos-champions/'><h2><FormattedMessage id="learn"/></h2></a>
-            <div  className="underline">
-                <span></span>
-                <span></span>
-            </div>
+    
+    <div className="row justify-content-center">
+      <div className="col-lg-12">
+        <div className="section-title text-center pt-10 pb-10">
+          <br/>
+          <a href='/nos-championnes'><h2><FormattedMessage id="learn"/></h2></a>
+          <div className="underline">
+            <span></span>
+            <span></span>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
     <Testimonial2 posts={data.learn.edges}/>
 
     <Partner/>
     <CallAction contacts={data.contact.nodes}/>
-
   </Layout>
 )
 
@@ -544,7 +539,7 @@ allStickyPosts: allWpPost(
 
   rapports: allWpPost(
     sort: {fields: date, order: DESC},
-    limit: 3
+    limit: 4
     filter: {language: {code: {eq: FR}}, categories: {nodes: {elemMatch: {slug: {eq: "nos-publications"}}}}}
   ) {
     edges {

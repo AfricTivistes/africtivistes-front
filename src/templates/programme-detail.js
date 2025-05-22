@@ -11,7 +11,7 @@ import ListePosts from "../components/ListePost/ListePost"
 
 const ProgrammeDetail = ({ data, pageContext, intl }) =>{
     const programme = data.allWpProgramme.nodes[0];
-    const translation = programme.translations.lenght && programme.translations[0].link;
+    const translation = programme.translations.length && programme.translations[0].link;
     const image = programme.featuredImage && programme.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src;
     return (
       <IntlContextConsumer>

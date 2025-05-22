@@ -1,10 +1,11 @@
 import React from 'react'
-import {FormattedMessage } from "gatsby-plugin-react-intl"
-import { ImportScript } from '../../services'
+import { useImportScript } from '../../services'
+
+const getPublicLink = (link) => link.replace(/^https?:\/\/update\.africtivistes\.org/, '/fr');
 
 const Counter = ({posts}) => {
 
-  ImportScript("/js/load/counter.js");
+  useImportScript("/js/load/counter.js");
 
   return (<section id="counter-part-2" >
     {/* style={{backgroundImage:`url(/images/slider/ss.jpeg)`}} */}
@@ -21,7 +22,7 @@ const Counter = ({posts}) => {
               <img src="/images/abidjan2021pf.jpg" alt="Video"/>
                 <div className="content">
                 {posts.map(post=>(
-                  <a  key={post.id} className="video-popup" href={post.link} aria-label="button"><i className="flaticon-music-player-play"></i></a>
+                  <a  key={post.id} className="video-popup" href={getPublicLink(post.link)} aria-label="button"><i className="flaticon-music-player-play"></i></a>
 
               ))}</div>
                         </div>

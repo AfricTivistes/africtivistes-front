@@ -14,9 +14,9 @@ const CategoryTemplate = ({ pageContext }) => {
     return (
         <Layout>
             <PageBanner title={categoryName} />
-            <div class="row justify-content-center mt-2">
-                <div class="col-lg-8">
-                    <div class="section-title text-center pt-10 pb-10">
+            <div className="row justify-content-center mt-2">
+                <div className="col-lg-8">
+                    <div className="section-title text-center pt-10 pb-10">
                         <div dangerouslySetInnerHTML={{ __html: categoryDescription }}></div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@ const CategoryTemplate = ({ pageContext }) => {
                         <ListePosts 
                             posts={posts}
                         />
-                    <div class="row justify-content-center">
+                    <div className="row justify-content-center">
                         <Pagination 
                             totalPages={totalPages} 
                             currentPage={currentPage} 

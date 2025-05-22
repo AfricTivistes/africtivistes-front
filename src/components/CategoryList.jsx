@@ -4,7 +4,7 @@ import { FormattedMessage } from 'gatsby-plugin-react-intl';
 
 const CategoryList = ({ categoryNames }) => {
     return (
-        <div class="blog-subscribe rounded">
+        <div className="blog-subscribe rounded">
             <h4 className="mb-3"><FormattedMessage id='categoryList'/></h4>
         <ul>
             {categoryNames.map(category => (

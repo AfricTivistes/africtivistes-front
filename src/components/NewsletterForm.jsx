@@ -2,8 +2,8 @@ import React from 'react'
 import { FormattedMessage, injectIntl } from 'gatsby-plugin-react-intl'
 
 const Newsletter = ({intl}) => (
-  <div class="blog-subscribe rounded">
-    <div class="subscribe-form mt-25">
+  <div className="blog-subscribe rounded">
+    <div className="subscribe-form mt-25">
           <h4><FormattedMessage id="subscribe"/></h4>
         </div>
         <span><FormattedMessage id="newsletter"/></span>
@@ -16,7 +16,7 @@ const Newsletter = ({intl}) => (
             >
               <input type="email" name="email" style={{ display: "none" }} />
               <input
-                type="hidden"js
+                type="hidden"
                 name="key"
                 defaultValue="eyJpdiI6IkNZVnAzWGs4ZndqdHRQd1lMdFFiTktaaWdSWGlYQ2NGaUs0UkpHaVV3RDg9IiwidmFsdWUiOiJtZm5hTDd0enFWZG9LQ1pcL3NzZFc5cEpJdnVheFFnMVhQaU92REZrTmZpVT0iLCJtYWMiOiJmMmEzMGVmNDc0MzdmY2ZlOGQ5ZTM1OTMzNTI2NjA2ZTA0MzNjN2FhNTEyNDliZWQ3YmIyOWIwMTU2N2M2NzlmIn0="
               />

@@ -31,7 +31,7 @@ const AfrictivistesPage = ({data}) => {
             </div>
         </div>
     </section>
-      <About3 content={content} picture={featuredImage.node.localFile}/>
+    <About3 content={content} valeurs={data.valeurs.nodes} histoire={data.histoire.nodes} picture={featuredImage.node.localFile}/>
       <Intervention/>
       <Team teams={data.allWpTeam.nodes}/>
       <CallAction contacts={data.contact.nodes}/>
@@ -113,6 +113,16 @@ export const query = graphql`
       translations {
         link
       }
+    }
+  }
+  valeurs: allWpPage(filter: {slug: {eq: "valeurs"}}) {
+    nodes {
+      link
+    }
+  }
+  histoire: allWpPage(filter: {slug: {eq: "histoire"}}) {
+    nodes {
+      link
     }
   }
 }

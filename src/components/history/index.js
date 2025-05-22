@@ -18,7 +18,7 @@ const History = () => (
             <div class="row">
                 <div class="col-lg-6">
                     <div class="years-experience mt-45">
-                        <h4 class="mb-25"><FormattedMessage id="reseau"/></h4>
+                        {/* <h4 class="mb-25"><FormattedMessage id="reseau"/></h4> */}
                         <p class="mb-10"><FormattedMessage id="presentation-reseau"/></p>
                     </div>
                 </div>
@@ -59,6 +59,9 @@ const History = () => (
                             <li><FormattedMessage id="capacitation"/></li>
                             <li><FormattedMessage id="promotion"/></li>
                             <li><FormattedMessage id="developpement"/></li>
+                            <li><FormattedMessage id="realisation"/></li>
+                            <li><FormattedMessage id="applications"/></li>
+
                         </ul>
                             </div>
                         </div>

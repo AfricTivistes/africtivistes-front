@@ -53,6 +53,7 @@
   "n_part_panel":"Panel participants",
   "n_expert":"Experts",
   "nosValeurs":"Our values",
+  "notreHistoire": "Our history",
   "chershotes":"Our dear Ivorian hosts,,",
   "chersafrictivistes":"Dear AfricTivistes,",
   "president":"President, AfricTivises",
@@ -131,6 +132,15 @@
   "presentation_elearning_4_3":"The courses, practical exercises and situations relating to online safety and protection can be accessed free of charge by registering on the dedicated platform.",
   "share": "Share 👉🏿",
   "related": "Related articles",
-  "plateforme": "Our Web platforms"
+  "plateforme": "Our Web platforms",
+  "nameRequired": "Name is required.",
+  "phoneRequired": "Phone is required.",
+  "emailRequired": "A valid email is required.",
+  "countryRequired": "Country is required.",
+  "cityRequired": "City is required.",
+  "professionRequired": "Profession is required.",
+  "biographyRequired": "Biography is required.",
+  "subjectRequired": "Subject is required.",
+  "messageRequired": "Please leave a message."
 
 }
