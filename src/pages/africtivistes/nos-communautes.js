@@ -31,7 +31,7 @@ const CommunautesPage = ({data, intl }) => {
             </div>
         </div>
     </section>
-      <PageCommunaute programmes={data.allWpCommunauteType.nodes} projects={data.allWpCommunautes.nodes} />
+      <PageCommunaute programmes={data.allWpCommunauteType.nodes} projects={data.allWpCommunaute.nodes} />
     </Layout>
     }
     </IntlContextConsumer>
