@@ -1,5 +1,8 @@
 // require('dotenv').config();
 module.exports = {
+  flags: {
+    PARALLEL_QUERY_RUNNING: true
+  },
   siteMetadata: {
     title: `Africtivistes`,
     description: `Ligue Africaine des Blogueurs et Web activistes pour la Démocratie`,
@@ -26,6 +29,11 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
+        schema: {
+          perPage: 20, // Réduit le nombre d'éléments par requête (au lieu de 100)
+          requestConcurrency: 5, // Réduit le nombre de requêtes simultanées (au lieu de 15)
+          previewRequestConcurrency: 2, // Moins de charge pour les previews
+        },
         url: `https://update.africtivistes.org/graphql`,
         presets: [
           {
@@ -86,9 +94,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-          trackingId: 'UA-228721643-1', // leave empty if you want to disable the tracker
-          anonymize: true, // default
-          head: true,
+        trackingId: 'UA-228721643-1', // leave empty if you want to disable the tracker
+        anonymize: true, // default
+        head: true,
       },
     },
     `gatsby-plugin-gatsby-cloud`,

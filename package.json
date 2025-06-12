@@ -7,7 +7,7 @@
   "dependencies": {
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
-    "gatsby": "^4.23.0",
+    "gatsby": "^4.1.0",
     "gatsby-paginate": "^1.1.1",
     "gatsby-plugin-gatsby-cloud": "4.23.0",
     "gatsby-plugin-gdpr-cookies": "^2.0.9",
@@ -20,7 +20,7 @@
     "gatsby-plugin-sass": "5.23.0",
     "gatsby-plugin-sharp": "4.24.0",
     "gatsby-source-filesystem": "4.23.0",
-    "gatsby-source-wordpress": "6.23.0",
+    "gatsby-source-wordpress": "^6.3.0",
     "gatsby-transformer-sharp": "4.23.0",
     "i": "^0.3.7",
     "install": "^0.13.0",

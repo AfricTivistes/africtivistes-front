@@ -57,7 +57,7 @@ export const query = graphql`
       slug
     }
   }
-  allWpCommunautes(filter: {language: {code: {eq: FR}}}) {
+  allWpCommunaute(filter: {language: {code: {eq: FR}}}) {
     nodes {
       id
       title
