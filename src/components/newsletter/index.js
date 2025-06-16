@@ -74,7 +74,7 @@ const Newsletter = ({ intl }) => {
                       <i className="flaticon-placeholder"></i>
                     </div>
                     <div className="content pl-15">
-                      <p>BP 19968 Dakar, Cite Sofraco, VDN 3 prolongée</p>
+                      <p>Liberté 6 extension villa N°263, Dakar, Sénégal</p>
                     </div>
                   </div>
                 </li>
