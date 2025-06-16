@@ -722,21 +722,21 @@ allStickyPosts: allWpPost(
     nodes {
       id
       title
-      link
-      date(formatString: "DD MMMM, YYYY", locale: "fr")
+      slug
+      uri
       plateforme {
         url
       }
       featuredImage {
-          node {
-            altText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(width: 300, height: 300, placeholder: DOMINANT_COLOR)
-              }
+        node {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 300, height: 300, placeholder: DOMINANT_COLOR)
             }
           }
         }
+      }
     }
   }
 }

@@ -31,7 +31,7 @@ const Communities = ({ data }) => {
             </div>
         </div>
     </section>
-      <PageCommunaute programmes={data.allWpCommunauteType.nodes} projects={data.allWpCommunautes.nodes} />
+      <PageCommunaute programmes={data.allWpCommunauteType.nodes} projects={data.allWpCommunaute.nodes} />
     </Layout>
     }
     </IntlContextConsumer>
@@ -57,7 +57,7 @@ export const query = graphql`
       slug
     }
   }
-  allWpCommunautes(filter: {language: {code: {eq: FR}}}) {
+  allWpCommunaute(filter: {language: {code: {eq: EN}}}) {
     nodes {
       id
       title
@@ -87,7 +87,6 @@ export const query = graphql`
         linkedin
         twitter
       }
-      
     }
   }
   contact: allWpPage(filter: {slug: {eq: "contact-us"}}) {

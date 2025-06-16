@@ -544,15 +544,15 @@ learn: allWpPost(
   }
  }
   plateforme: allWpPlateforme {
-  nodes {
-    id
-    title
-    link
-    date(formatString: "DD MMMM, YYYY", locale: "fr")
-    plateforme {
-      url
-    }
-    featuredImage {
+    nodes {
+      id
+      title
+      slug
+      uri
+      plateforme {
+        url
+      }
+      featuredImage {
         node {
           altText
           localFile {
@@ -562,8 +562,8 @@ learn: allWpPost(
           }
         }
       }
+    }
   }
-}
 }   
 `
 

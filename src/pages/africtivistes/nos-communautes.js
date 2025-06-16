@@ -31,7 +31,7 @@ const CommunautesPage = ({data, intl }) => {
             </div>
         </div>
     </section>
-      <PageCommunaute programmes={data.allWpCommunauteType.nodes} projects={data.allWpCommunautes.nodes} />
+      <PageCommunaute programmes={data.allWpCommunauteType.nodes} projects={data.allWpCommunaute.nodes} />
     </Layout>
     }
     </IntlContextConsumer>
@@ -57,7 +57,7 @@ query {
       slug
     }
   }
-  allWpCommunautes(filter: {language: {code: {eq: FR}}}) {
+  allWpCommunaute(filter: {language: {code: {eq: FR}}}) {
     nodes {
       id
       title
@@ -87,7 +87,6 @@ query {
         linkedin
         twitter
       }
-      
     }
   }
   contact: allWpPage(filter: {slug: {eq: "nous-contacter"}}) {

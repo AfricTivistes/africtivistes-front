@@ -6,7 +6,7 @@ module.exports = {
     author: `@africtivistes`,
     email: [`info@africtivistes.org`],
     tels: ['(+221) 33 837 51 24'],
-    adresse: 'Liberté 6 extention, Villa Numéro 263, Dakar - SENEGAL',
+    adresse: 'Liberté 6 extension, villa N°263, Dakar - SENEGAL',
     siteUrl: `https://www.africtivistes.com/`,
   },
   plugins: [
