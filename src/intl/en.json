@@ -141,6 +141,7 @@
   "professionRequired": "Profession is required.",
   "biographyRequired": "Biography is required.",
   "subjectRequired": "Subject is required.",
-  "messageRequired": "Please leave a message."
+  "messageRequired": "Please leave a message.",
+  "contribution": "Our contributions"
 
 }

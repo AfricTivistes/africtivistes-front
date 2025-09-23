@@ -62,6 +62,31 @@ const IndexPage = ({data}) => (
   </div>
 </div>
 
+<div  className="row justify-content-center pt-30">
+                <div  className="col-lg-12">
+                    <div  className="section-title text-center pb-15">
+                        <h3><FormattedMessage id="contribution"/></h3>
+                        <div  className="underline">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <LatestNews posts={data.contribution.edges}/>
+        <div className="row">
+  <div className="col-lg-12">
+    <div className="project-more text-center mt-50">
+      {data.contribution && data.contribution.edges && data.contribution.edges.length > 0 ? (
+        <a className="main-btn" href="/blog">
+          <FormattedMessage id="more" />
+        </a>
+      ) : (
+        <span></span>
+      )}
+    </div>
+  </div>
+</div>
 
     <div className="row justify-content-center pt-30">
         <div className="col-lg-12">
@@ -358,6 +383,55 @@ nodes {
   }
 }
 }
+
+contribution :  allWpPost(
+  sort: {fields: [date], order: DESC},
+  limit: 3
+  filter: {language: {code: {eq: FR}}, categories: {nodes: {elemMatch: {slug: {eq: "blog"}}}}}
+
+  ) {
+    edges {
+      node {
+        id
+        title
+        date(formatString: "DD MMMM, YYYY", locale: "fr")
+        excerpt
+        slug
+        language {
+          slug
+        }
+        link
+        featuredImage {
+          node {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  width:500,
+                  height: 500,
+                  placeholder: DOMINANT_COLOR
+                )
+              }
+            }
+          }
+        }
+        categories {
+          nodes {
+            name
+            count
+          }
+        }
+      }
+    }
+nodes {
+
+  slug
+  language {
+    slug
+  }
+}
+}
+
   latestnews: allWpPost(
     limit: 3
     skip: 3

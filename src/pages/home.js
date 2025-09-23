@@ -223,6 +223,54 @@ nodes {
   }
 }
 }
+contribution :  allWpPost(
+  sort: {fields: [date], order: DESC},
+  limit: 3
+  filter: {language: {code: {eq: EN}}, categories: {nodes: {elemMatch: {slug: {eq: "blog-en"}}}}}
+
+  ) {
+    edges {
+      node {
+        id
+        title
+        date(formatString: "DD MMMM, YYYY", locale: "en")
+        excerpt
+        slug
+        language {
+          slug
+        }
+        link
+        featuredImage {
+          node {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  width: 1500,
+                  height: 1200,
+                  placeholder: DOMINANT_COLOR
+                )
+              }
+            }
+          }
+        }
+        categories {
+          nodes {
+            name
+            count
+          }
+        }
+      }
+    }
+nodes {
+
+  slug
+  language {
+    slug
+  }
+}
+}
+
 allWpPost(
 sort: {fields: [date], order: DESC},
  limit: 3

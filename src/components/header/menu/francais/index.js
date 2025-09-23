@@ -8,36 +8,44 @@ const renderMenu = (data) => {
   const menu = flatListToHierarchical(data)
   return (
     <ul className="navbar-nav">
-      {menu.map((item, index) => (
+      {menu.map((item, index) => {
+        // Correction du texte "CONTIBUTIONS" en "CONTRIBUTIONS"
+        const correctedLabel = item.label === "CONTIBUTIONS" ? "CONTRIBUTIONS" : item.label
+        return (
         <li className="nav-item" key={index}>
           {item.path.startsWith("http") ? (
             <a href={item.path} target="_blank" rel="noopener noreferrer">
-              {item.label}
+              {correctedLabel}
             </a>
           ) : (
             <Link activeClassName={'active'} to={item.path}>
-              {item.label}
+              {correctedLabel}
             </Link>
           )}
           {item.children && item.children.length > 0 && (
             <ul className="sub-menu">
-              {item.children.map((item, index) => (
-                <li key={index}>
-                  {item.path.startsWith("http") ? (
-                    <a href={item.path} target="_blank" rel="noopener noreferrer">
-                      {item.label}
+              {item.children.map((childItem, childIndex) => {
+                // Correction du texte "CONTIBUTIONS" en "CONTRIBUTIONS" pour les sous-menus aussi
+                const correctedChildLabel = childItem.label === "CONTIBUTIONS" ? "CONTRIBUTIONS" : childItem.label
+                return (
+                <li key={childIndex}>
+                  {childItem.path.startsWith("http") ? (
+                    <a href={childItem.path} target="_blank" rel="noopener noreferrer">
+                      {correctedChildLabel}
                     </a>
                   ) : (
-                    <Link to={item.path}>
-                      {item.label}
+                    <Link to={childItem.path}>
+                      {correctedChildLabel}
                     </Link>
                   )}
                 </li>
-              ))}
+                )
+              })}
             </ul>
           )}
         </li>
-      ))}
+        )
+      })}
     </ul>)
 }
 

@@ -139,5 +139,6 @@
   "professionRequired": "La profession est requise.",
   "biographyRequired": "La biographie est requise.",
   "subjectRequired": "L'objet est requis.",
-  "messageRequired": "Veuillez laisser un message."
+  "messageRequired": "Veuillez laisser un message.",
+  "contribution": "Nos contributions"
 }

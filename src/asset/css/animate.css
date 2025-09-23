@@ -3755,13 +3755,15 @@
 
 /* Style de base du bouton */
 .btn-newsletter {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 8px 16px;
   color: #8B0000;
   border: 1px solid #8B0000;
   background-color: transparent;
   text-decoration: none;
   transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+  white-space: nowrap;
 }
 
 /* Style du bouton au survol */
