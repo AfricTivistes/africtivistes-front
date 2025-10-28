@@ -140,5 +140,15 @@
   "biographyRequired": "La biographie est requise.",
   "subjectRequired": "L'objet est requis.",
   "messageRequired": "Veuillez laisser un message.",
-  "contribution": "Nos contributions"
+  "contribution": "Nos contributions",
+  "equivalencyDetermination": "Détermination d'Equivalence",
+  "articleNotFound": "Article non trouvé",
+  "readingTime": "min de lecture",
+  "by": "Par",
+  "article": "Article",
+  "articleTags": "Tags de l'article",
+  "relatedArticles": "Articles liés",
+  "discoverRelated": "Découvrez d'autres articles similaires",
+  "category": "Blog",
+  "contributionSpace": "Espace de contribution"
 }

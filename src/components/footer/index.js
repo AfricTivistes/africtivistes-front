@@ -6,34 +6,52 @@ import Menu from "./menu"
 import Newsletter from '../NewsletterFooter'
 import Contact from "./contact"
 import Copyright from './copyright'
+import Equivalency from './equivalency'
 
 const Footer = () => (
   <>
-    <section id="footer-part" className="footer-part pt-70 pb-120">
+    <section id="footer-part" className="footer-part">
       <div className="container">
-        <div className="row">
-          <div className="col-lg-3 col-md-6 col-sm-12">
-            <div className="footer-description pt-50">
-              <div className="logo mb-20">
-                <a href="/">
-                  <img src="/images/logo-white.svg" alt="Logo"/>
+        {/* Première section : Informations principales */}
+        <div className="row footer-main-section">
+          <div className="col-lg-4 col-md-6 col-sm-12 mb-50">
+            <div className="footer-description">
+              <div className="logo mb-30">
+                <a href="/" className="footer-logo">
+                  <img src="/images/logo-white.svg" alt="Africtivistes Logo"/>
                 </a>
               </div>
-              {/* <p className="mb-15"><FormattedMessage id="description" /></p> */}
+              <div className="footer-social">
                 <Social/>
               </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6">
-              <Menu/>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6">
-              <Contact/>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-12">
-              <Newsletter/>
-            </div>
+              <div className="footer-newsletter-section">
+                <Newsletter/>
+              </div>
             </div>
           </div>
+          
+          <div className="col-lg-2 col-md-6 col-sm-6 mb-50">
+            <div className="footer-menu">
+              <h4 className="footer-section-title">Navigation</h4>
+              <Menu/>
+            </div>
+          </div>
+          
+          <div className="col-lg-3 col-md-6 col-sm-6 mb-50">
+            <div className="footer-contact">
+              <h4 className="footer-section-title">Contact</h4>
+              <Contact/>
+            </div>
+          </div>
+          
+          <div className="col-lg-3 col-md-6 col-sm-12 mb-50">
+            <Equivalency/>
+          </div>
+        </div>
+        
+        {/* Séparateur décoratif */}
+        <div className="footer-divider"></div>
+      </div>
     </section>
 
     <Copyright/>

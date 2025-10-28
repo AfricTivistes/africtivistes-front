@@ -2,8 +2,8 @@ import React from 'react'
 import { FormattedMessage, injectIntl } from 'gatsby-plugin-react-intl'
 
 const Newsletter = ({intl}) => (
-      <div className="footer-subscribe pt-45">
-        <div className="title mb-35">
+      <div className="footer-subscribe">
+        <div className="title">
           <h4><FormattedMessage id="subscribe"/></h4>
         </div>
         <span><FormattedMessage id="newsletter"/></span>

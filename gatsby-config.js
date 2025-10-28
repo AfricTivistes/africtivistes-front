@@ -30,9 +30,17 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         schema: {
-          perPage: 20, // Réduit le nombre d'éléments par requête (au lieu de 100)
-          requestConcurrency: 5, // Réduit le nombre de requêtes simultanées (au lieu de 15)
-          previewRequestConcurrency: 2, // Moins de charge pour les previews
+          perPage: 10, // Encore plus réduit
+          requestConcurrency: 2, // Très réduit
+          previewRequestConcurrency: 1, // Minimum
+        },
+        type: {
+          MediaItem: {
+            localFile: {
+              requestConcurrency: 1, // Très réduit pour éviter les timeouts
+              maxFileSizeBytes: 10485760, // 10MB max
+            },
+          },
         },
         url: `https://update.africtivistes.org/graphql`,
         presets: [

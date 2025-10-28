@@ -142,6 +142,23 @@
   "biographyRequired": "Biography is required.",
   "subjectRequired": "Subject is required.",
   "messageRequired": "Please leave a message.",
-  "contribution": "Our contributions"
-
+  "contribution": "Our contributions",
+  "equivalencyDetermination": "Equivalency Determination",
+  "articleNotFound": "Article not found",
+  "readingTime": "min read",
+  "by": "By",
+  "article": "Article",
+  "articleTags": "Article tags",
+  "relatedArticles": "Related articles",
+  "discoverRelated": "Discover other similar articles",
+  "category": "Blog",
+  "filterByTags": "Filter articles",
+  "totalArticles": "Total articles",
+  "allTags": "All tags",
+  "noArticles": "No articles available at this time.",
+  "noArticlesFound": "No articles found.",
+  "noRelatedArticles": "No related articles available.",
+  "selectTag": "Select a tag",
+  "resetFilters": "Reset filters",
+  "contributionSpace": "Contribution space"
 }

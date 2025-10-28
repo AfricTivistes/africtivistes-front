@@ -7,6 +7,7 @@ import Partner from '../components/partner'
 import About from "../components/about"
 import Projects from "../components/projects"
 import LatestNews from '../components/latestNews'
+import BlogCards from '../components/blogCards'
 import CallAction from '../components/callAction'
 import Counter from '../components/counter'
 import EnChiffres from '../components/chiffres'
@@ -73,7 +74,7 @@ const IndexPage = ({data}) => (
                     </div>
                 </div>
         </div>
-        <LatestNews posts={data.contribution.edges}/>
+        <BlogCards posts={data.contribution.edges}/>
         <div className="row">
   <div className="col-lg-12">
     <div className="project-more text-center mt-50">
@@ -401,6 +402,19 @@ contribution :  allWpPost(
           slug
         }
         link
+        author {
+          node {
+            name
+            firstName
+            lastName
+          }
+        }
+        tags {
+          nodes {
+            name
+            slug
+          }
+        }
         featuredImage {
           node {
             altText
@@ -418,6 +432,7 @@ contribution :  allWpPost(
         categories {
           nodes {
             name
+            slug
             count
           }
         }

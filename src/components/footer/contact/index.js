@@ -15,10 +15,7 @@ const Contact = () => {
   }`)
   const { email, tels, adresse } = data.site.siteMetadata
   
-  return (<div className="footer-contact pt-45">
-    <div className="title mb-35">
-      <h4><FormattedMessage id="contact"/></h4>
-    </div>
+  return (<div className="footer-contact">
     <ul>
       <li>
         {tels.map(tel=><p key={tel}>{tel}</p>)}
