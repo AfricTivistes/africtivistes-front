@@ -148,5 +148,13 @@
   "articleTags": "Tags de l'article",
   "relatedArticles": "Articles liés",
   "discoverRelated": "Découvrez d'autres articles similaires",
+  "filterByTags": "Filtrer par tags",
+  "totalArticles": "Total d'articles",
+  "allTags": "Tous les tags",
+  "noArticles": "Aucun article disponible pour le moment.",
+  "noArticlesFound": "Aucun article trouvé.",
+  "noRelatedArticles": "Aucun article similaire disponible.",
+  "selectTag": "Sélectionner un tag",
+  "resetFilters": "Réinitialiser les filtres",
   "category": "Blog"
 }
