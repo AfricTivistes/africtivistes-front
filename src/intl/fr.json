@@ -22,7 +22,6 @@
   "detail": "Détails",
   "search":"Rechercher",
   "recentPost":"Dernières actualités",
-  "category":"Catégories",
   "categoryList":"Explorez nos thématiques",
   "readMore":"Lire plus",
   "tags":"Mots-clés",
@@ -149,6 +148,5 @@
   "articleTags": "Tags de l'article",
   "relatedArticles": "Articles liés",
   "discoverRelated": "Découvrez d'autres articles similaires",
-  "category": "Blog",
-  "contributionSpace": "Espace de contribution"
+  "category": "Blog"
 }

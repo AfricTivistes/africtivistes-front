@@ -22,7 +22,6 @@
   "detail": "View Detail",
   "search":"Search",
   "recentPost":"Recent Post",
-  "category":"Category",
   "categoryList": "Explore our themes",
   "readMore":"Read More",
   "tags":"Tags",
@@ -159,6 +158,5 @@
   "noArticlesFound": "No articles found.",
   "noRelatedArticles": "No related articles available.",
   "selectTag": "Select a tag",
-  "resetFilters": "Reset filters",
-  "contributionSpace": "Contribution space"
+  "resetFilters": "Reset filters"
 }
