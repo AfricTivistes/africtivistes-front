@@ -172,7 +172,7 @@ exports.createPages = async ({ graphql, actions }) => {
       name: lang === 'fr' ? 'Blog' : 'Blog', 
       description: lang === 'fr' 
         ? 'La rubrique blog est un espace de libre expression pour la communauté panaricaine de AfricTivistes. Elle accueille des billets d\'opinion, des analyses, des retours d\'expérience et des contributions autour de la citoyenneté, de la démocratie, de la participation citoyenne, de la gouvernance et de l\'innovation sociale, entre autres thématiques.' 
-        : 'The Blog section is a space for free expression for the Pan-African community of AfricTivistes. It welcomes opinion pieces, analyses, experiences, and contributions around citizenship, democracy, civic participation, governance, and social innovation, among other themes.', 
+        : 'The blog section is a space for free expression for the pan-African community of AfricTivistes. It features opinion pieces, analyses, feedback and contributions on citizenship, democracy, citizen participation, governance and social innovation, among other topics.', 
       posts: [] 
     });
 
