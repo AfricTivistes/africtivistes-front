@@ -156,5 +156,6 @@
   "noRelatedArticles": "Aucun article similaire disponible.",
   "selectTag": "Sélectionner un tag",
   "resetFilters": "Réinitialiser les filtres",
-  "category": "Blog"
+  "category": "Blog",
+  "blogDescription": "La rubrique blog est un espace de libre expression pour la communauté panaricaine de AfricTivistes. Elle accueille des billets d'opinion, des analyses, des retours d'expérience et des contributions autour de la citoyenneté, de la démocratie, de la participation citoyenne, de la gouvernance et de l'innovation sociale, entre autres thématiques."
 }

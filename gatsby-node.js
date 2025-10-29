@@ -1,7 +1,12 @@
 const path = require(`path`)
+const fs = require(`fs`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
+  
+  // Charger les fichiers de traduction
+  const frTranslations = JSON.parse(fs.readFileSync(path.join(__dirname, 'src/intl/fr.json'), 'utf8'))
+  const enTranslations = JSON.parse(fs.readFileSync(path.join(__dirname, 'src/intl/en.json'), 'utf8'))
 
   const programmes = await graphql(`
     {
@@ -167,12 +172,11 @@ exports.createPages = async ({ graphql, actions }) => {
     const blogSlug = lang === 'en' ? 'blog-en' : 'blog';
     
     // Toujours ajouter la catégorie blog pour chaque langue, même si elle n'existe pas dans WordPress
+    const translations = lang === 'fr' ? frTranslations : enTranslations
     categories.set(blogSlug, { 
       slug: blogSlug, 
       name: lang === 'fr' ? 'Blog' : 'Blog', 
-      description: lang === 'fr' 
-        ? 'La rubrique blog est un espace de libre expression pour la communauté panaricaine de AfricTivistes. Elle accueille des billets d\'opinion, des analyses, des retours d\'expérience et des contributions autour de la citoyenneté, de la démocratie, de la participation citoyenne, de la gouvernance et de l\'innovation sociale, entre autres thématiques.' 
-        : 'The blog section is a space for free expression for the pan-African community of AfricTivistes. It features opinion pieces, analyses, feedback and contributions on citizenship, democracy, citizen participation, governance and social innovation, among other topics.', 
+      description: translations.blogDescription, 
       posts: [] 
     });
 
