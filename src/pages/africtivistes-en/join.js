@@ -4,7 +4,6 @@ import { IntlContextConsumer } from "gatsby-plugin-react-intl"
 
 import AdhererPage from '../africtivistes/adherer'
 
-
 const Join = ({ data }) => (
   
 <IntlContextConsumer>

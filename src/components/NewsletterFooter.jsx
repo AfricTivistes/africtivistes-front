@@ -1,7 +1,37 @@
 import React from 'react'
 import { FormattedMessage, injectIntl } from 'gatsby-plugin-react-intl'
 
-const Newsletter = ({intl}) => (
+const Newsletter = ({intl}) => {
+  const logDebug = (hypothesisId, message, data) => {
+    // #region agent log
+    fetch('http://127.0.0.1:7927/ingest/4904cff7-09ff-474b-aa2b-cf78f520317b',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f4202d'},body:JSON.stringify({sessionId:'f4202d',runId:'pre-fix',hypothesisId,location:'src/components/NewsletterFooter.jsx',message,data,timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+  };
+
+  const handleNewsletterSubmit = (event) => {
+    const form = event.currentTarget;
+    const newsletterInput = form.querySelector('input[name="inf[1]"]');
+    const honeypotInput = form.querySelector('input[name="email"]');
+    const keyInput = form.querySelector('input[name="key"]');
+    const webformIdInput = form.querySelector('input[name="webform_id"]');
+
+    logDebug('H3', 'Footer newsletter submit triggered', {
+      path: typeof window !== 'undefined' ? window.location.pathname : 'ssr',
+      action: form.getAttribute('action') || '',
+      target: form.getAttribute('target') || '',
+      hasNewsletterField: Boolean(newsletterInput),
+      newsletterLength: newsletterInput?.value?.trim().length || 0,
+      honeypotLength: honeypotInput?.value?.trim().length || 0,
+    });
+
+    logDebug('H4', 'Footer newsletter hidden fields snapshot', {
+      keyLength: keyInput?.value?.length || 0,
+      webformId: webformIdInput?.value || '',
+      keyHasBooleanJsAttribute: keyInput?.hasAttribute('js') || false,
+    });
+  };
+
+  return (
       <div className="footer-subscribe pt-45">
         <div className="title mb-35">
           <h4><FormattedMessage id="subscribe"/></h4>
@@ -13,6 +43,7 @@ const Newsletter = ({intl}) => (
               action="https://newsletter.infomaniak.com/external/submit"
               className="inf-form"
               target="_blank"
+              onSubmit={handleNewsletterSubmit}
             >
               <input type="email" name="email" style={{ display: "none" }} />
               <input
@@ -50,7 +81,8 @@ const Newsletter = ({intl}) => (
           </form>
           </div>
   </div>
-)
+  )
+}
 
 
 export default injectIntl(Newsletter)
