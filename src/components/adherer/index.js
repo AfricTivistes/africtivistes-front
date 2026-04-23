@@ -5,10 +5,22 @@ import NewsletterFooter from '../NewsletterFooter';
 const Adherer = ({ intl, content }) => {
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState({});
+  const logDebug = (hypothesisId, message, data) => {
+    // #region agent log
+    fetch('http://127.0.0.1:7927/ingest/4904cff7-09ff-474b-aa2b-cf78f520317b',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f4202d'},body:JSON.stringify({sessionId:'f4202d',runId:'pre-fix',hypothesisId,location:'src/components/adherer/index.js',message,data,timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const newErrors = {};
+    logDebug('H1', 'Adherer submit handler called', {
+      path: typeof window !== 'undefined' ? window.location.pathname : 'ssr',
+      preventedDefault: event.defaultPrevented,
+      formName: event.currentTarget?.getAttribute('name') || '',
+      formId: event.currentTarget?.getAttribute('id') || '',
+      formAction: event.currentTarget?.getAttribute('action') || '',
+    });
 
     if (!formData.name) newErrors.name = <FormattedMessage id="nameRequired" />;
     if (!formData.phone) newErrors.phone = <FormattedMessage id="phoneRequired" />;
@@ -21,9 +33,21 @@ const Adherer = ({ intl, content }) => {
     if (!formData.message) newErrors.message = <FormattedMessage id="messageRequired" />;
 
     if (Object.keys(newErrors).length > 0) {
+      logDebug('H2', 'Adherer validation blocked submit', {
+        errorKeys: Object.keys(newErrors),
+        errorCount: Object.keys(newErrors).length,
+      });
       setErrors(newErrors);
     } else {
-      // Handle form submission
+      logDebug('H1', 'Adherer has no validation errors', {
+        fieldCount: Object.keys(formData).length,
+      });
+      // #region agent log
+      fetch('http://127.0.0.1:7927/ingest/4904cff7-09ff-474b-aa2b-cf78f520317b',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f4202d'},body:JSON.stringify({sessionId:'f4202d',runId:'post-fix',hypothesisId:'H1_FIX',location:'src/components/adherer/index.js',message:'Adherer native submit invoked after validation',data:{fieldCount:Object.keys(formData).length},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
+      setErrors({});
+      // Let Netlify receive the POST once client validation passes.
+      event.currentTarget.submit();
     }
   };
 
@@ -44,7 +68,7 @@ const Adherer = ({ intl, content }) => {
           </div>
           <div className="col-lg-6">
             <div className="contact-form mt-20">
-              <form onSubmit={handleSubmit} method="post" data-netlify="true" data-netlify-honeypot="bot-field" name="adherer" id="contact-form" data-toggle="validator">
+              <form onSubmit={handleSubmit} method="post" data-netlify="true" data-netlify-honeypot="bot-field" name="adherer" id="adherer-form" data-toggle="validator">
                 <input type="hidden" name="form-name" value="adherer" />
                 <div hidden>
                   <input name="bot-field" />
