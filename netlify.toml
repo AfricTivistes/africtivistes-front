@@ -15,3 +15,16 @@
   to = "/fr/"
   status = 301
   force = true
+
+# English membership page lives under africtivistes-en; old /en/join links 404.
+[[redirects]]
+  from = "/en/join"
+  to = "/en/africtivistes-en/join/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/join/"
+  to = "/en/africtivistes-en/join/"
+  status = 301
+  force = true
