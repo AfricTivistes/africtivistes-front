@@ -1,2 +1,4 @@
 # Redirects from what the browser requests to what we serve
 /en              /en/home
+/en/join         /en/africtivistes-en/join/    301!
+/en/join/        /en/africtivistes-en/join/    301!
