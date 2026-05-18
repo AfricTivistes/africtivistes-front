@@ -1,15 +1,20 @@
 import React from 'react'
 import { injectIntl } from "gatsby-plugin-react-intl"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
+import { GatsbyImageSafe } from "../../../../utils/gatsby-image-safe"
 
 const ColLgMd = ({ project }) => {
+  const image =
+    project.featuredImage?.node?.localFile &&
+    getImage(project.featuredImage.node.localFile)
+
   return (
     <div className="card rounded-0 h-100">
       <div className="card-img-top" >
         <a href={project.plateforme.url} target="_blank" rel="noopener noreferrer">
-          <GatsbyImage 
-            image={getImage(project.featuredImage.node.localFile)} 
-            alt={project.featuredImage.node.altText}
+          <GatsbyImageSafe
+            image={image}
+            alt={project.featuredImage?.node?.altText || project.title}
             style={{ height: '100%', width: '100%', objectFit: 'cover' }}
           />
         </a>

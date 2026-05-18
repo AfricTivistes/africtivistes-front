@@ -1,6 +1,42 @@
 const path = require(`path`)
 const fs = require(`fs`)
 
+// #region agent log
+const DEBUG_LOG = path.join(__dirname, `.cursor/debug-9969bd.log`)
+const agentLog = (payload) => {
+  try {
+    fs.appendFileSync(
+      DEBUG_LOG,
+      `${JSON.stringify({
+        sessionId: `9969bd`,
+        timestamp: Date.now(),
+        ...payload,
+      })}\n`
+    )
+  } catch (_) {}
+}
+// #endregion
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { deletePage } = actions
+  const isEnIndex =
+    (page.path === `/en/` || page.path === `/en`) &&
+    page.component &&
+    page.component.includes(`pages${path.sep}index.js`)
+
+  if (isEnIndex) {
+    // #region agent log
+    agentLog({
+      hypothesisId: `H_EN_INDEX`,
+      location: `gatsby-node.js:onCreatePage`,
+      message: `delete duplicate /en/ index (use /en/home)`,
+      data: { path: page.path, component: page.component },
+    })
+    // #endregion
+    deletePage(page)
+  }
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
   

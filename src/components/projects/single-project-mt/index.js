@@ -1,5 +1,6 @@
 import React from 'react'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
+import { GatsbyImageSafe } from "../../../utils/gatsby-image-safe"
 import {FormattedMessage, injectIntl } from "gatsby-plugin-react-intl"
 
 const SingleProjectMt = ({post}) => {
@@ -7,11 +8,10 @@ const SingleProjectMt = ({post}) => {
     const image = featuredImage && getImage(featuredImage.node.localFile)
 
     return (
-        
       <div className="card">
                 <div className="card-img-top" >
                     <a href={link}>
-                        <GatsbyImage href={link} image={image} alt={title} />
+                        <GatsbyImageSafe image={image} alt={title} />
                     </a>
                 </div>
                 <div class="card-body">

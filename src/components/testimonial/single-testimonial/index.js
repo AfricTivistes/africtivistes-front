@@ -1,5 +1,6 @@
 import React from 'react'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
+import { GatsbyImageSafe } from "../../../utils/gatsby-image-safe"
 import {injectIntl } from "gatsby-plugin-react-intl"
 
 const SingleTestimonial = ({post}) => {
@@ -14,7 +15,7 @@ const SingleTestimonial = ({post}) => {
             <div className="testimonial-author">
             <div className="author-image">
                 <a 
-                > <GatsbyImage image={image} alt={title}/></a>
+                > <GatsbyImageSafe image={image} alt={title}/></a>
                     </div>
                 <div className="author-name">
                 <a

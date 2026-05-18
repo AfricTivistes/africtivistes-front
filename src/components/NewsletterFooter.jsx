@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FormattedMessage, injectIntl } from 'gatsby-plugin-react-intl'
 
 const Newsletter = ({intl}) => {
   const logDebug = (hypothesisId, message, data) => {
     // #region agent log
-    fetch('http://127.0.0.1:7927/ingest/4904cff7-09ff-474b-aa2b-cf78f520317b',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'f4202d'},body:JSON.stringify({sessionId:'f4202d',runId:'pre-fix',hypothesisId,location:'src/components/NewsletterFooter.jsx',message,data,timestamp:Date.now()})}).catch(()=>{});
+    const payload = {sessionId:'9969bd',runId:'pre-fix',hypothesisId,location:'src/components/NewsletterFooter.jsx',message,data,timestamp:Date.now()};
+    fetch('http://127.0.0.1:7927/ingest/4904cff7-09ff-474b-aa2b-cf78f520317b',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'9969bd'},body:JSON.stringify(payload)}).catch((error)=>{
+      fetch('http://127.0.0.1:7927/ingest/4904cff7-09ff-474b-aa2b-cf78f520317b',{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({...payload,runId:'fallback',hypothesisId:`${hypothesisId}_FALLBACK`,data:{...data,originalError:error?.message || 'unknown'}})}).catch(()=>{});
+    });
+    if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+      navigator.sendBeacon('http://127.0.0.1:7927/ingest/4904cff7-09ff-474b-aa2b-cf78f520317b', JSON.stringify({...payload,runId:'beacon',hypothesisId:`${hypothesisId}_BEACON`}));
+    }
     // #endregion
   };
+
+  useEffect(() => {
+    logDebug('H27', 'Newsletter footer component mounted', {
+      path: typeof window !== 'undefined' ? window.location.pathname : 'ssr',
+    });
+  }, []);
 
   const handleNewsletterSubmit = (event) => {
     const form = event.currentTarget;

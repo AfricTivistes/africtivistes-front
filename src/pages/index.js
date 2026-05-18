@@ -19,7 +19,7 @@ import Testimonial2 from "../components/testimonial/testimonial2"
 
 const IndexPage = ({data}) => (
   <Layout>
-    <Seo title={data.allWpPage.nodes.title} />
+    <Seo title={data.allWpPage?.nodes?.[0]?.title || "AfricTivistes"} />
 
     <Slider posts={data.allStickyPosts.edges} contacts={data.contact.nodes}/>
 

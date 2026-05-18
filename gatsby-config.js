@@ -35,6 +35,21 @@ module.exports = {
           previewRequestConcurrency: 1, // Minimum
         },
         type: {
+          Projet: {
+            excludeFieldNames: [
+              'ph1ChildProjet',
+              'ph2ChildProjet',
+              'ph3ChildProjet',
+              'ph4ChildProjet',
+              'ph5ChildProjet',
+              'ph6ChildProjet',
+              'ph7ChildProjet',
+              'ph8ChildProjet',
+            ],
+          },
+          Partenaire_Partenaireinformations: {
+            excludeFieldNames: ['typePartenaire'],
+          },
           MediaItem: {
             localFile: {
               requestConcurrency: 1, // Très réduit pour éviter les timeouts

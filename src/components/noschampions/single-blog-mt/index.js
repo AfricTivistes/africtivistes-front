@@ -1,5 +1,6 @@
 import React from 'react'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
+import { GatsbyImageSafe } from "../../../utils/gatsby-image-safe"
 import {FormattedMessage, injectIntl } from "gatsby-plugin-react-intl"
 
 const SingleBogMt = ({post}) => {
@@ -12,7 +13,7 @@ const SingleBogMt = ({post}) => {
         <div className="col-xl-5 col-lg-6 text-center">
             <div className="blog-image">
                 <a href={link}>
-                    <GatsbyImage image={image} alt={title} />
+                    <GatsbyImageSafe image={image} alt={title} />
                 </a>
             </div>
         </div>
@@ -27,8 +28,6 @@ const SingleBogMt = ({post}) => {
         </div>
     </div>
 </div>
-
-      
     )
 }
 
