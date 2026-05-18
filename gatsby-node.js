@@ -17,24 +17,55 @@ const agentLog = (payload) => {
 }
 // #endregion
 
-exports.onCreatePage = ({ page, actions }) => {
-  const { deletePage } = actions
-  const isEnIndex =
-    (page.path === `/en/` || page.path === `/en`) &&
-    page.component &&
-    page.component.includes(`pages${path.sep}index.js`)
+const isDuplicateEnIndexPage = (page) => {
+  const isEnRoot = page.path === `/en/` || page.path === `/en`
+  const isIndexComponent =
+    (page.component &&
+      (page.component.includes(`pages${path.sep}index.js`) ||
+        page.component.includes(`pages/index.js`))) ||
+    page.componentChunkName === `component---src-pages-index-js`
+  return isEnRoot && isIndexComponent
+}
 
-  if (isEnIndex) {
-    // #region agent log
-    agentLog({
-      hypothesisId: `H_EN_INDEX`,
-      location: `gatsby-node.js:onCreatePage`,
-      message: `delete duplicate /en/ index (use /en/home)`,
-      data: { path: page.path, component: page.component },
-    })
-    // #endregion
-    deletePage(page)
-  }
+const deleteDuplicateEnIndex = (page, actions, location) => {
+  if (!isDuplicateEnIndexPage(page)) return false
+  // #region agent log
+  agentLog({
+    hypothesisId: `H_EN_INDEX`,
+    location,
+    message: `delete duplicate /en/ index (use /en/home)`,
+    data: {
+      path: page.path,
+      component: page.component,
+      componentChunkName: page.componentChunkName,
+    },
+  })
+  // #endregion
+  actions.deletePage(page)
+  return true
+}
+
+exports.onCreatePage = ({ page, actions }) => {
+  deleteDuplicateEnIndex(page, actions, `gatsby-node.js:onCreatePage`)
+}
+
+// Runs after all pages exist — catches /en/ if onCreatePage ran before react-intl
+exports.onPostBootstrap = ({ getNodesByType, actions }) => {
+  const pages = getNodesByType(`SitePage`)
+  let removed = 0
+  pages.forEach((page) => {
+    if (deleteDuplicateEnIndex(page, actions, `gatsby-node.js:onPostBootstrap`)) {
+      removed += 1
+    }
+  })
+  // #region agent log
+  agentLog({
+    hypothesisId: `H_EN_INDEX`,
+    location: `gatsby-node.js:onPostBootstrap`,
+    message: `post-bootstrap en index cleanup`,
+    data: { removed, totalPages: pages.length },
+  })
+  // #endregion
 }
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -325,4 +356,33 @@ exports.createPages = async ({ graphql, actions }) => {
   // Créer les pages d'articles pour chaque langue
   createArticlePages(allPostsFR.allWpPost.nodes, "fr");
   createArticlePages(allPostsEN.allWpPost.nodes, "en");
+}
+
+exports.onPostBuild = async ({ graphql, reporter }) => {
+  const result = await graphql(`
+    {
+      enIndex: allSitePage(filter: { path: { in: ["/en/", "/en"] } }) {
+        nodes {
+          path
+          componentChunkName
+        }
+      }
+    }
+  `)
+  const enIndexPages = result.data?.enIndex?.nodes || []
+  // #region agent log
+  agentLog({
+    hypothesisId: `H_EN_INDEX_VERIFY`,
+    location: `gatsby-node.js:onPostBuild`,
+    message: `verify /en/ index removed after build`,
+    data: { remaining: enIndexPages },
+  })
+  // #endregion
+  if (enIndexPages.length > 0) {
+    reporter.warn(
+      `[build] Duplicate EN index still present: ${JSON.stringify(enIndexPages)}`
+    )
+  } else {
+    reporter.info(`[build] Duplicate /en/ index page removed (use /en/home)`)
+  }
 }
